@@ -7,11 +7,12 @@ jdk:
 env:
   global:
     - TEST_ES_SERVER=http://localhost:9250
-    - ELASTICSEARCH_VERSION=7.2.0
+    - ELASTICSEARCH_VERSION=7.2.1
 
 before_install:
-- curl -O https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.2.1-amd64.deb && sudo dpkg -i --force-confnew elasticsearch-7.2.1-amd64.deb
-- sudo service elasticsearch start
+- pkill -9 -f elasticsearch || true
+- curl https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-${ELASTICSEARCH_VERSION}-linux-x86_64.tar.gz | tar xz -C /tmp
+- /tmp/elasticsearch-${ELASTICSEARCH_VERSION}/bin/elasticsearch-keystore create
 
 cache: bundler
 
