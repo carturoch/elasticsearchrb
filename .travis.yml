@@ -13,7 +13,7 @@ before_install:
 - pkill -9 -f elasticsearch || true
 - curl https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-${ELASTICSEARCH_VERSION}-linux-x86_64.tar.gz | tar xz -C /tmp
 - /tmp/elasticsearch-${ELASTICSEARCH_VERSION}/bin/elasticsearch-keystore create
-- /tmp/elasticsearch-${ELASTICSEARCH_VERSION}/bin/elasticsearch -d -p pid
+- /tmp/elasticsearch-${ELASTICSEARCH_VERSION}/bin/elasticsearch
 
 cache: bundler
 
@@ -21,6 +21,5 @@ before_script:
   - sleep 20
 
 script:
-  - curl -v http://localhost:9250/
-  - curl -v http://localhost:9200/
+  - curl -v ${TEST_ES_SERVER}
   - bundle exec rspec
