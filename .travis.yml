@@ -1,15 +1,15 @@
 language: ruby
 rvm:
   - 2.5.3
-before_install:
-  - curl -O https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.2.1-amd64.deb && sudo dpkg -i --force-confnew elasticsearch-7.2.1-amd64.deb && sudo service elasticsearch restart
-services:
-  - elasticsearch
-cache: bundler
+
+  before_install:
+  - curl -O https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.2.1-amd64.deb && sudo dpkg -i --force-confnew elasticsearch-7.2.1-amd64.deb
+
+  cache: bundler
+
 before_script:
+  - sudo systemctl start elasticsearch
   - sleep 10
-  - elasticsearch -v
-  - sudo systemctl restart elasticsearch
 
 script:
   - bundle exec rspec
