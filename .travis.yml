@@ -2,14 +2,9 @@ language: ruby
 rvm:
   - 2.5.3
 
-env:
-  global:
-    - TEST_ES_SERVER=http://localhost:9200
-    - ELASTICSEARCH_VERSION=7.2.1
-
 before_install:
 - pkill -9 -f elasticsearch || true
-- curl -O https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-${ELASTICSEARCH_VERSION}-amd64.deb && sudo dpkg -i --force-confnew elasticsearch-${ELASTICSEARCH_VERSION}.deb
+- curl -O https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.2.1-amd64.deb && sudo dpkg -i --force-confnew elasticsearch-7.2.1.deb
 - sudo /bin/systemctl daemon-reload
 - sudo /bin/systemctl enable elasticsearch.service
 - sudo /bin/systemctl start elasticsearch.service
@@ -20,5 +15,5 @@ before_script:
   - sleep 10
 
 script:
-  - curl -v ${TEST_ES_SERVER}
+  - curl -v http://localhost:9200
   - bundle exec rspec
