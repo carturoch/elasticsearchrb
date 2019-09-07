@@ -7,7 +7,7 @@ require 'elasticsearch'
 RSpec.describe Client do
   let(:elasticsearch_client) do
     Elasticsearch::Client.new(
-      host: 'http://localhost:9250',
+      host: 'http://localhost:9200',
       log: true
     )
   end
