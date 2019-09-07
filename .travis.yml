@@ -2,12 +2,11 @@ language: ruby
 rvm:
   - 2.5.3
 jdk:
-  - oraclejdk8
+  - oraclejdk10
 
 before_install:
 - curl -O https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.2.1-amd64.deb && sudo dpkg -i --force-confnew elasticsearch-7.2.1-amd64.deb
 - sudo service elasticsearch start
-- java --version
 
 cache: bundler
 
