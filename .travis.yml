@@ -4,12 +4,13 @@ rvm:
 
 before_install:
 - curl -O https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.2.1-amd64.deb && sudo dpkg -i --force-confnew elasticsearch-7.2.1-amd64.deb
+- sudo service elasticsearch start
 
 cache: bundler
 
 before_script:
-  - sudo systemctl start elasticsearch
   - sleep 10
 
 script:
+  - curl -v http://localhost:9200/
   - bundle exec rspec
