@@ -18,7 +18,7 @@ before_install:
 cache: bundler
 
 before_script:
-  - sleep 10
+  - sleep 20
 
 script:
   - curl -v http://localhost:9250/
