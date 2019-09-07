@@ -21,6 +21,7 @@ RSpec.describe Client do
     end
 
     it 'creates the given index' do
+      p elasticsearch_client.info
       expect(client.create_index).to be_a Hash
     end
   end
