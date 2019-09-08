@@ -7,12 +7,13 @@ before_install:
 - sudo dpkg -i --force-confnew elasticsearch-7.2.1-amd64.deb
 - sudo /bin/systemctl daemon-reload
 - sudo /bin/systemctl enable elasticsearch.service
-- sudo /bin/systemctl start elasticsearch.service
+- sudo /bin/systemctl restart elasticsearch.service
 
 cache: bundler
 
 before_script:
   - sleep 30
+  - cat /var/log/elasticsearch/*
 
 script:
   - curl -v http://localhost:9200
