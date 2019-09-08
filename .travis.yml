@@ -3,18 +3,16 @@ rvm:
   - 2.5.3
 
 before_install:
-- pkill -9 -f elasticsearch || true
-- ps -p 1
-- curl -O https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.2.1-amd64.deb && sudo dpkg -i --force-confnew elasticsearch-7.2.1-amd64.deb
+- curl -O https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.2.1-amd64.deb
+- sudo dpkg -i --force-confnew elasticsearch-7.2.1-amd64.deb
 - sudo /bin/systemctl daemon-reload
 - sudo /bin/systemctl enable elasticsearch.service
 - sudo /bin/systemctl start elasticsearch.service
-- sudo -i service elasticsearch start
 
 cache: bundler
 
 before_script:
-  - sleep 10
+  - sleep 30
 
 script:
   - curl -v http://localhost:9200
