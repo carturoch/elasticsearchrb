@@ -14,5 +14,5 @@ before_script:
   - sleep 10
 
 script:
-  - curl localhost:9200
+  - curl http://localhost:9200
   - bundle exec rspec
