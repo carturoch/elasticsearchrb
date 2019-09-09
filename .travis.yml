@@ -6,7 +6,7 @@ before_install:
 - curl -O https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.2.1-amd64.deb
 - sudo dpkg -i --force-confnew elasticsearch-7.2.1-amd64.deb
 - sudo chown -R elasticsearch:elasticsearch /etc/default/elasticsearch
-- sudo service elasticsearch restart
+- sudo -i service elasticsearch restart
 
 cache: bundler
 
@@ -14,5 +14,5 @@ before_script:
   - sleep 10
 
 script:
-  - curl -X GET "localhost:9200/?pretty"
+  - curl localhost:9200
   - bundle exec rspec
