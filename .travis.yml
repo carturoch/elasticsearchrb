@@ -5,8 +5,8 @@ rvm:
 before_install:
 - curl -O https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.2.1-amd64.deb
 - sudo dpkg -i --force-confnew elasticsearch-7.2.1-amd64.deb
-- sudo /etc/init.d/elasticsearch restart
-- sudo cat /etc/default/elasticsearch
+- sudo chown -R elasticsearch:elasticsearch /etc/default/elasticsearch
+- sudo service elasticsearch restart
 
 cache: bundler
 
